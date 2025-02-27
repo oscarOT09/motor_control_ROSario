@@ -30,6 +30,7 @@ class SetPointPublisher(Node):
         elapsed_time = (self.get_clock().now() - self.start_time).nanoseconds/1e9
         # Generate sine wave signal
         self.signal_msg.data = self.amplitude * np.sin(self.omega * elapsed_time)
+        #self.signal_msg.data = self.amplitude * np.sign(np.sin(self.omega * elapsed_time))
         # Publish the signal
         self.signal_publisher.publish(self.signal_msg)
     

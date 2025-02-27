@@ -21,11 +21,11 @@ class PIDController(Node):
         self.dt = 0.01  # Tiempo de muestreo
 
         # Suscriptores
-        self.subscription_setpoint = self.create_subscription(Float32, '/set_point_ROSario', self.setpoint_callback, 10)
-        self.subscription_output = self.create_subscription(Float32, '/motor_speed_y_ROSario', self.output_callback, 10)
+        self.subscription_setpoint = self.create_subscription(Float32, 'set_point_ROSario', self.setpoint_callback, 10)
+        self.subscription_output = self.create_subscription(Float32, 'motor_speed_y_ROSario', self.output_callback, 10)
 
         # Publicador
-        self.publisher = self.create_publisher(Float32, '/motor_input_u_ROSario', 10)
+        self.publisher = self.create_publisher(Float32, 'motor_input_u_ROSario', 10)
 
         # Variables de control
         self.set_point = 0.0
