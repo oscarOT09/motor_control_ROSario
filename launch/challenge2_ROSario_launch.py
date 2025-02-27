@@ -1,0 +1,47 @@
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    motor_node = Node(name="motor_sys_ROSario",
+                       package='motor_control_ROSario',
+                       executable='dc_motor_ROSario',
+                       emulate_tty=True,
+                       output='screen',
+                       parameters=[{
+                        'sample_time': 0.01,
+                        'sys_gain_K': 2.16,
+                        'sys_tau_T': 0.05,
+                        'initial_conditions': 0.0,
+                            }
+                        ]
+                    )
+    
+    sp_node = Node(name="sp_gen_ROSario",
+                       package='motor_control_ROSario',
+                       executable='set_point_ROSario',
+                       emulate_tty=True,
+                       output='screen',
+                       )
+    
+    pid_node = Node(name="control_pid_ROSario",
+                       package='motor_control_ROSario',
+                       executable='control_pid_ROSario',
+                       emulate_tty=True,
+                       output='screen',
+                       parameters=[{
+                        'kp': 30.00,
+                        'ki': 3.15,
+                        'kd': 0.7875,
+                            }
+                        ]
+                    )
+    
+    plot_node = Node(name="rqt_plot",
+                       package='rqt_plot',
+                       executable='rqt_plot',
+                       output='screen',
+                    )
+    
+    l_d = LaunchDescription([motor_node, sp_node, pid_node, plot_node])
+
+    return l_d
