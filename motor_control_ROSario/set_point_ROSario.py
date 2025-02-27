@@ -3,12 +3,16 @@ import rclpy
 from rclpy.node import Node
 import numpy as np
 from std_msgs.msg import Float32
+from rcl_interfaces.msg import SetParametersResult
 
 #Class Definition
 class SetPointPublisher(Node):
     def __init__(self):
         super().__init__('set_point_node_ROSario')
 
+        self.declare_parameter('type_flag', 0.0)
+        self.type_flag = self.get_parameter('type_flag').value
+        
         # Retrieve sine wave parameters
         self.amplitude = 2.0
         self.omega  = 1.0
@@ -22,6 +26,9 @@ class SetPointPublisher(Node):
         self.signal_msg = Float32()
         self.start_time = self.get_clock().now()
 
+        #Parameter Callback
+        self.add_on_set_parameters_callback(self.parameters_callback)
+
         self.get_logger().info("SetPoint Node Started \U0001F680")
 
     # Timer Callback: Generate and Publish Sine Wave Signal
@@ -29,10 +36,25 @@ class SetPointPublisher(Node):
         #Calculate elapsed time
         elapsed_time = (self.get_clock().now() - self.start_time).nanoseconds/1e9
         # Generate sine wave signal
-        self.signal_msg.data = self.amplitude * np.sin(self.omega * elapsed_time)
-        #self.signal_msg.data = self.amplitude * np.sign(np.sin(self.omega * elapsed_time))
+        if self.type_flag == 0:
+            self.signal_msg.data = self.amplitude * np.sin(self.omega * elapsed_time)
+        else:
+            self.signal_msg.data = self.amplitude * np.sign(np.sin(self.omega * elapsed_time))
         # Publish the signal
         self.signal_publisher.publish(self.signal_msg)
+
+    def parameters_callback(self, params):
+        for param in params:
+            #system gain parameter check
+            if param.name == "type_flag":
+                #check if it is negative
+                if (param.value < 0.0 or param.value > 1.0):
+                    self.get_logger().warn("Invalid type_flag! It just can be 0 or 1.")
+                    return SetParametersResult(successful=False, reason="type_flag cannot be different from 0 and 1")
+                else:
+                    self.type_flag = param.value  # Update internal variable
+                    self.get_logger().info(f"type_flag updated to {self.type_flag}")
+        return SetParametersResult(successful=True)
     
 
 #Main
