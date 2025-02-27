@@ -19,7 +19,7 @@ class PIDController(Node):
 
         self.prev_error = 0.0
         self.integral = 0.0
-        self.dt = 0.01  # Tiempo de muestreo
+        self.dt = 0.01  # 100 Hz
 
         # Suscriptores
         self.subscription_setpoint = self.create_subscription(Float32, 'set_point_ROSario', self.setpoint_callback, 10)
@@ -79,7 +79,7 @@ class PIDController(Node):
             #system gain parameter check
             if param.name == "kp":
                 #check if it is negative
-                if (param.value < 0.0 or param.value > 1.0):
+                if (param.value < 0.0):
                     self.get_logger().warn("Invalid kp! It just cannot be negative.")
                     return SetParametersResult(successful=False, reason="kp cannot be negative")
                 else:

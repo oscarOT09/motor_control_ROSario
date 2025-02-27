@@ -27,7 +27,7 @@ def generate_launch_description():
     package_directory = get_package_share_directory(package)
     #Get the address of the launch file
     launch_file_path = os.path.join(package_directory, 'launch', launch_file)
-    #Set the launch file source for the group1 and group2
+    #Set the launch file source for the group1, group2 and group3
     launch_source1 = PythonLaunchDescriptionSource(launch_file_path)
     launch_source2 = PythonLaunchDescriptionSource(launch_file_path)
     launch_source3 = PythonLaunchDescriptionSource(launch_file_path)

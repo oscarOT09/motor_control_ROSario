@@ -11,15 +11,20 @@ class SetPointPublisher(Node):
         super().__init__('set_point_node_ROSario')
 
         self.declare_parameter('type_flag', 0.0)
+        self.declare_parameter('amplitude', 2.0)
+        self.declare_parameter('omega', 1.0)
+
         self.type_flag = self.get_parameter('type_flag').value
+        self.amplitude = self.get_parameter('amplitude').value
+        self.omega = self.get_parameter('omega').value
         
         # Retrieve sine wave parameters
-        self.amplitude = 2.0
-        self.omega  = 1.0
-        self.timer_period = 0.1 #seconds
+        #self.amplitude = 2.0
+        #self.omega  = 1.0
+        self.timer_period = 0.02 #seconds = 50 Hz
 
         #Create a publisher and timer for the signal
-        self.signal_publisher = self.create_publisher(Float32, 'set_point_ROSario', 10)    ## CHECK FOR THE NAME OF THE TOPIC
+        self.signal_publisher = self.create_publisher(Float32, 'set_point_ROSario', 10)
         self.timer = self.create_timer(self.timer_period, self.timer_cb)
         
         #Create a messages and variables to be used
@@ -54,6 +59,22 @@ class SetPointPublisher(Node):
                 else:
                     self.type_flag = param.value  # Update internal variable
                     self.get_logger().info(f"type_flag updated to {self.type_flag}")
+            elif param.name == "amplitude":
+                #check if it is negative
+                if (param.value < 0.0):
+                    self.get_logger().warn("Invalid amplitude! It cannot be negative.")
+                    return SetParametersResult(successful=False, reason="amplitude cannot be negative")
+                else:
+                    self.amplitude = param.value  # Update internal variable
+                    self.get_logger().info(f"amplitude updated to {self.amplitude}")
+            elif param.name == "omega":
+                #check if it is negative
+                if (param.value < 0.0):
+                    self.get_logger().warn("Invalid omega! It cannot be negative.")
+                    return SetParametersResult(successful=False, reason="omega cannot be negative")
+                else:
+                    self.omega = param.value  # Update internal variable
+                    self.get_logger().info(f"omega updated to {self.omega}")
         return SetParametersResult(successful=True)
     
 

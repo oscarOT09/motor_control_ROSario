@@ -13,7 +13,7 @@ class DCMotor(Node):
 
         # Declare parameters
         # System sample time in seconds
-        self.declare_parameter('sample_time', 0.02)
+        self.declare_parameter('sample_time', 0.02) # 50 Hz
         # System gain K
         self.declare_parameter('sys_gain_K', 1.75)
         # System time constant Tau

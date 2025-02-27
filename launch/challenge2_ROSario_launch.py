@@ -23,6 +23,8 @@ def generate_launch_description():
                        output='screen',
                        parameters=[{
                         'type_flag': 0.0,
+                        'amplitude' : 2.0,
+                        'omega' : 1.0,
                         }
                         ]
                        )
