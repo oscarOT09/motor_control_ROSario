@@ -1,0 +1,5 @@
+[console_scripts]
+control_pid_ROSario = motor_control_ROSario.control_pid_ROSario:main
+dc_motor_ROSario = motor_control_ROSario.dc_motor_ROSario:main
+set_point_ROSario = motor_control_ROSario.set_point_ROSario:main
+

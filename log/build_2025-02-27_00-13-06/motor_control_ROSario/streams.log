@@ -1,0 +1,47 @@
+[0.355s] Invoking command in '/home/oscar_ot09/ros2_ws/src/motor_control_ROSario': PYTHONPATH=/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/motor_control_ROSario build --build-base /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build install --record /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/install.log --single-version-externally-managed install_data
+[0.507s] running egg_info
+[0.507s] creating build/motor_control_ROSario/motor_control_ROSario.egg-info
+[0.507s] writing build/motor_control_ROSario/motor_control_ROSario.egg-info/PKG-INFO
+[0.507s] writing dependency_links to build/motor_control_ROSario/motor_control_ROSario.egg-info/dependency_links.txt
+[0.507s] writing entry points to build/motor_control_ROSario/motor_control_ROSario.egg-info/entry_points.txt
+[0.508s] writing requirements to build/motor_control_ROSario/motor_control_ROSario.egg-info/requires.txt
+[0.508s] writing top-level names to build/motor_control_ROSario/motor_control_ROSario.egg-info/top_level.txt
+[0.508s] writing manifest file 'build/motor_control_ROSario/motor_control_ROSario.egg-info/SOURCES.txt'
+[0.509s] reading manifest file 'build/motor_control_ROSario/motor_control_ROSario.egg-info/SOURCES.txt'
+[0.509s] writing manifest file 'build/motor_control_ROSario/motor_control_ROSario.egg-info/SOURCES.txt'
+[0.509s] running build
+[0.509s] running build_py
+[0.509s] creating /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build
+[0.509s] creating /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib
+[0.509s] creating /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib/motor_control_ROSario
+[0.510s] copying motor_control_ROSario/__init__.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib/motor_control_ROSario
+[0.510s] copying motor_control_ROSario/set_point_ROSario.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib/motor_control_ROSario
+[0.510s] copying motor_control_ROSario/control_pid_ROSario.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib/motor_control_ROSario
+[0.510s] copying motor_control_ROSario/dc_motor_ROSario.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib/motor_control_ROSario
+[0.510s] running install
+[0.510s] running install_lib
+[0.511s] creating /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario
+[0.511s] copying /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib/motor_control_ROSario/__init__.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario
+[0.511s] copying /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib/motor_control_ROSario/set_point_ROSario.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario
+[0.511s] copying /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib/motor_control_ROSario/control_pid_ROSario.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario
+[0.511s] copying /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build/lib/motor_control_ROSario/dc_motor_ROSario.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario
+[0.511s] byte-compiling /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario/__init__.py to __init__.cpython-310.pyc
+[0.511s] byte-compiling /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario/set_point_ROSario.py to set_point_ROSario.cpython-310.pyc
+[0.512s] byte-compiling /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario/control_pid_ROSario.py to control_pid_ROSario.cpython-310.pyc
+[0.512s] byte-compiling /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario/dc_motor_ROSario.py to dc_motor_ROSario.cpython-310.pyc
+[0.512s] running install_data
+[0.513s] creating /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/share/ament_index
+[0.513s] creating /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/share/ament_index/resource_index
+[0.513s] creating /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/share/ament_index/resource_index/packages
+[0.513s] copying resource/motor_control_ROSario -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/share/ament_index/resource_index/packages
+[0.513s] copying package.xml -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/share/motor_control_ROSario
+[0.513s] creating /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/share/motor_control_ROSario/launch
+[0.513s] copying launch/challenge2_ROSario_launch.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/share/motor_control_ROSario/launch
+[0.513s] running install_egg_info
+[0.514s] Copying build/motor_control_ROSario/motor_control_ROSario.egg-info to /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario-0.0.0-py3.10.egg-info
+[0.515s] running install_scripts
+[0.527s] Installing control_pid_ROSario script to /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/motor_control_ROSario
+[0.527s] Installing dc_motor_ROSario script to /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/motor_control_ROSario
+[0.527s] Installing set_point_ROSario script to /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/motor_control_ROSario
+[0.527s] writing list of installed files to '/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/install.log'
+[0.541s] Invoked command in '/home/oscar_ot09/ros2_ws/src/motor_control_ROSario' returned '0': PYTHONPATH=/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/motor_control_ROSario build --build-base /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build install --record /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/install.log --single-version-externally-managed install_data

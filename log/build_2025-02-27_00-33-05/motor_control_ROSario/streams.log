@@ -1,0 +1,24 @@
+[0.344s] Invoking command in '/home/oscar_ot09/ros2_ws/src/motor_control_ROSario': PYTHONPATH=/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/motor_control_ROSario build --build-base /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build install --record /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/install.log --single-version-externally-managed install_data
+[0.483s] running egg_info
+[0.484s] writing build/motor_control_ROSario/motor_control_ROSario.egg-info/PKG-INFO
+[0.484s] writing dependency_links to build/motor_control_ROSario/motor_control_ROSario.egg-info/dependency_links.txt
+[0.484s] writing entry points to build/motor_control_ROSario/motor_control_ROSario.egg-info/entry_points.txt
+[0.484s] writing requirements to build/motor_control_ROSario/motor_control_ROSario.egg-info/requires.txt
+[0.484s] writing top-level names to build/motor_control_ROSario/motor_control_ROSario.egg-info/top_level.txt
+[0.485s] reading manifest file 'build/motor_control_ROSario/motor_control_ROSario.egg-info/SOURCES.txt'
+[0.486s] writing manifest file 'build/motor_control_ROSario/motor_control_ROSario.egg-info/SOURCES.txt'
+[0.486s] running build
+[0.486s] running build_py
+[0.486s] running install
+[0.486s] running install_lib
+[0.487s] running install_data
+[0.487s] copying launch/challenge2_ROSario_launch.py -> /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/share/motor_control_ROSario/launch
+[0.487s] running install_egg_info
+[0.488s] removing '/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario-0.0.0-py3.10.egg-info' (and everything under it)
+[0.488s] Copying build/motor_control_ROSario/motor_control_ROSario.egg-info to /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages/motor_control_ROSario-0.0.0-py3.10.egg-info
+[0.488s] running install_scripts
+[0.501s] Installing control_pid_ROSario script to /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/motor_control_ROSario
+[0.501s] Installing dc_motor_ROSario script to /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/motor_control_ROSario
+[0.501s] Installing set_point_ROSario script to /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/motor_control_ROSario
+[0.501s] writing list of installed files to '/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/install.log'
+[0.514s] Invoked command in '/home/oscar_ot09/ros2_ws/src/motor_control_ROSario' returned '0': PYTHONPATH=/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/oscar_ot09/ros2_ws/src/motor_control_ROSario/install/motor_control_ROSario/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/motor_control_ROSario build --build-base /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/build install --record /home/oscar_ot09/ros2_ws/src/motor_control_ROSario/build/motor_control_ROSario/install.log --single-version-externally-managed install_data
