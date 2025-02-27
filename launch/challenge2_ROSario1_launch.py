@@ -4,6 +4,7 @@ from ament_index_python.packages import get_package_share_directory
 
 #iMPORTS REQUIRED FOR CALLING OTHER LAUNCH FILES (NESTING)
 from launch import LaunchDescription
+from launch_ros.actions import Node
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
@@ -42,9 +43,7 @@ def generate_launch_description():
 
     #SET NAMESPACE FOR ALL THE NODES INSIDE THE LAUNCH FILE
     motor_control_group1 = GroupAction(
-        actions=[PushRosNamespace(group1_ns),
-                 talker_listener_launch_1,
-                 ]
+        actions=[PushRosNamespace(group1_ns), talker_listener_launch_1,]
     )
 
     motor_control_group2 = GroupAction(
@@ -59,7 +58,25 @@ def generate_launch_description():
                  ]
     )
 
+    plot_node = Node(name="rqt_plot",
+                       package='rqt_plot',
+                       executable='rqt_plot',
+                       output='screen',
+                    )
+    
+    graph_node = Node(name="rqt_graph",
+                       package='rqt_graph',
+                       executable='rqt_graph',
+                       output='screen',
+                    )
+    
+    reconfigure_node = Node(name="rqt_reconfigure",
+                       package='rqt_reconfigure',
+                       executable='rqt_reconfigure',
+                       output='screen',
+                    )
+
     #LAUNCH THE DESCRIPTION
-    l_d = LaunchDescription([motor_control_group1, motor_control_group2, motor_control_group3])
+    l_d = LaunchDescription([motor_control_group1, motor_control_group2, motor_control_group3, plot_node,graph_node,reconfigure_node,])
 
     return l_d

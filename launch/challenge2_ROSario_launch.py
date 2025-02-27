@@ -1,6 +1,5 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
-#from launch.actions import ExecuteProcess
 
 def generate_launch_description():
     motor_node = Node(name="motor_sys_ROSario",
@@ -22,6 +21,10 @@ def generate_launch_description():
                        executable='set_point_ROSario',
                        emulate_tty=True,
                        output='screen',
+                       parameters=[{
+                        'type_flag': 0.0,
+                        }
+                        ]
                        )
     
     pid_node = Node(name="control_pid_ROSario",
@@ -37,12 +40,5 @@ def generate_launch_description():
                         ]
                     )
     
-    plot_node = Node(name="rqt_plot",
-                       package='rqt_plot',
-                       executable='rqt_plot',
-                       output='screen',
-                    )
-    
-    l_d = LaunchDescription([motor_node, sp_node, pid_node, plot_node,])
-    # ExecuteProcess(cmd=['ros2', 'topic', 'echo', '/motor_speed_y_ROSario'], output='screen'),
+    l_d = LaunchDescription([motor_node, sp_node, pid_node,])
     return l_d
