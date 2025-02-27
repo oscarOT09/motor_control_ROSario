@@ -3,10 +3,8 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32
 from rcl_interfaces.msg import SetParametersResult
-#from custom_interfaces.srv import SetProcessBool
 
-
-#Class Definition
+# Class Definition
 class DCMotor(Node):
     def __init__(self):
         super().__init__('dc_motor_ROSario')
@@ -26,7 +24,6 @@ class DCMotor(Node):
         self.param_K = self.get_parameter('sys_gain_K').value
         self.param_T = self.get_parameter('sys_tau_T').value
         self.initial_conditions = self.get_parameter('initial_conditions').value
-
 
         #Set the messages
         self.motor_output_msg = Float32()
@@ -58,7 +55,6 @@ class DCMotor(Node):
     #Subscriber Callback
     def input_callback(self, input_sgn):
         self.input_u = input_sgn.data
-
 
     def parameters_callback(self, params):
         for param in params:

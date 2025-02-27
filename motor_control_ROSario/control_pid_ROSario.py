@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32
 from rcl_interfaces.msg import SetParametersResult
+from servicio_ctrl.srv import SwitchCtrl
 
 class PIDController(Node):
     def __init__(self):
@@ -31,26 +32,38 @@ class PIDController(Node):
         # Variables de control
         self.set_point = 0.0
         self.motor_output = 0.0
+        
+        # Variable de salida
         self.u = 0.0
-
-        self.received_setpoint = False
-        self.received_output = False
 
         # Timer para ejecutar el control a intervalos regulares
         self.timer = self.create_timer(self.dt, self.control_loop)
 
-        #Parameter Callback
+        # Parameter Callback
         self.add_on_set_parameters_callback(self.parameters_callback)
 
+        # Se inicializa apagado el controlador
+        self.control_running = False
+
+        # Se crea crea nuestro servicio
+        self.srv = self.create_service(SwitchCtrl, 'EnableCtrl_ROSa',
+            self.control_service_callback)
+        
     def setpoint_callback(self, msg):
         self.set_point = msg.data
-        self.received_setpoint = True
 
     def output_callback(self, msg):
         self.motor_output = msg.data
-        self.received_output = True
 
-    def control_loop(self):    
+    def control_loop(self):
+        # En caso de estar apagado el controlador no procesa nada
+        if not self.control_running:
+            # Manda nuestro setpoint directo a nuestro motor
+            msg = Float32()
+            msg.data = self.set_point
+            self.publisher.publish(msg)
+            return
+            
         # Cálculo del error
         error = self.set_point - self.motor_output
 
@@ -68,11 +81,6 @@ class PIDController(Node):
 
         # Almacenar error anterior
         self.prev_error = error
-
-        # Actualizar parámetros en caso de que cambien
-        self.kp = self.get_parameter('kp').value
-        self.ki = self.get_parameter('ki').value
-        self.kd = self.get_parameter('kd').value
 
     def parameters_callback(self, params):
         for param in params:
@@ -102,6 +110,21 @@ class PIDController(Node):
                     self.kd = param.value  # Update internal variable
                     self.get_logger().info(f"kd updated to {self.kd}")
         return SetParametersResult(successful=True)
+    
+    def control_service_callback(self, request, response):
+        #Al cambiar el valor enable del Servicio se manda un mensaje
+        if request.enable:
+            self.control_running = True
+            self.get_logger().info(" Controler Started")
+            response.success = True
+            response.message = "Controler started Succesfully"
+        #En caso contrario tambien, esto con fin de debuggear
+        else:
+            self.control_running = False
+            self.get_logger().info(" Controler stopped")
+            response.success = True
+            response.message = "Controler stopped succesfully"
+        return response
 
 # Main
 def main(args=None):

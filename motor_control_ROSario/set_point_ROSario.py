@@ -10,6 +10,7 @@ class SetPointPublisher(Node):
     def __init__(self):
         super().__init__('set_point_node_ROSario')
 
+        # Retrieve sine wave parameters
         self.declare_parameter('type_flag', 0.0)
         self.declare_parameter('amplitude', 2.0)
         self.declare_parameter('omega', 1.0)
@@ -17,28 +18,25 @@ class SetPointPublisher(Node):
         self.type_flag = self.get_parameter('type_flag').value
         self.amplitude = self.get_parameter('amplitude').value
         self.omega = self.get_parameter('omega').value
-        
-        # Retrieve sine wave parameters
-        #self.amplitude = 2.0
-        #self.omega  = 1.0
+                
         self.timer_period = 0.02 #seconds = 50 Hz
 
-        #Create a publisher and timer for the signal
+        # Create a publisher and timer for the signal
         self.signal_publisher = self.create_publisher(Float32, 'set_point_ROSario', 10)
         self.timer = self.create_timer(self.timer_period, self.timer_cb)
         
-        #Create a messages and variables to be used
+        # Create a messages and variables to be used
         self.signal_msg = Float32()
         self.start_time = self.get_clock().now()
 
-        #Parameter Callback
+        # Parameter Callback
         self.add_on_set_parameters_callback(self.parameters_callback)
 
         self.get_logger().info("SetPoint Node Started \U0001F680")
 
     # Timer Callback: Generate and Publish Sine Wave Signal
     def timer_cb(self):
-        #Calculate elapsed time
+        # Calculate elapsed time
         elapsed_time = (self.get_clock().now() - self.start_time).nanoseconds/1e9
         # Generate sine wave signal
         if self.type_flag == 0:
@@ -50,9 +48,9 @@ class SetPointPublisher(Node):
 
     def parameters_callback(self, params):
         for param in params:
-            #system gain parameter check
+            # System gain parameter check
             if param.name == "type_flag":
-                #check if it is negative
+                # Check if it is negative
                 if (param.value < 0.0 or param.value > 1.0):
                     self.get_logger().warn("Invalid type_flag! It just can be 0 or 1.")
                     return SetParametersResult(successful=False, reason="type_flag cannot be different from 0 and 1")
@@ -60,7 +58,7 @@ class SetPointPublisher(Node):
                     self.type_flag = param.value  # Update internal variable
                     self.get_logger().info(f"type_flag updated to {self.type_flag}")
             elif param.name == "amplitude":
-                #check if it is negative
+                # Check if it is negative
                 if (param.value < 0.0):
                     self.get_logger().warn("Invalid amplitude! It cannot be negative.")
                     return SetParametersResult(successful=False, reason="amplitude cannot be negative")
@@ -68,7 +66,7 @@ class SetPointPublisher(Node):
                     self.amplitude = param.value  # Update internal variable
                     self.get_logger().info(f"amplitude updated to {self.amplitude}")
             elif param.name == "omega":
-                #check if it is negative
+                # Check if it is negative
                 if (param.value < 0.0):
                     self.get_logger().warn("Invalid omega! It cannot be negative.")
                     return SetParametersResult(successful=False, reason="omega cannot be negative")
@@ -77,8 +75,6 @@ class SetPointPublisher(Node):
                     self.get_logger().info(f"omega updated to {self.omega}")
         return SetParametersResult(successful=True)
     
-
-#Main
 def main(args=None):
     rclpy.init(args=args)
 
