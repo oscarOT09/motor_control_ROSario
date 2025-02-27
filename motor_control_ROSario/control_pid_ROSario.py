@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32
+from rcl_interfaces.msg import SetParametersResult
 
 class PIDController(Node):
     def __init__(self):
@@ -38,6 +39,9 @@ class PIDController(Node):
         # Timer para ejecutar el control a intervalos regulares
         self.timer = self.create_timer(self.dt, self.control_loop)
 
+        #Parameter Callback
+        self.add_on_set_parameters_callback(self.parameters_callback)
+
     def setpoint_callback(self, msg):
         self.set_point = msg.data
         self.received_setpoint = True
@@ -69,6 +73,35 @@ class PIDController(Node):
         self.kp = self.get_parameter('kp').value
         self.ki = self.get_parameter('ki').value
         self.kd = self.get_parameter('kd').value
+
+    def parameters_callback(self, params):
+        for param in params:
+            #system gain parameter check
+            if param.name == "kp":
+                #check if it is negative
+                if (param.value < 0.0 or param.value > 1.0):
+                    self.get_logger().warn("Invalid kp! It just cannot be negative.")
+                    return SetParametersResult(successful=False, reason="kp cannot be negative")
+                else:
+                    self.kp = param.value  # Update internal variable
+                    self.get_logger().info(f"kp updated to {self.kp}")
+            elif param.name == "ki":
+                #check if it is negative
+                if (param.value < 0.0):
+                    self.get_logger().warn("Invalid ki! It just cannot be negative.")
+                    return SetParametersResult(successful=False, reason="ki cannot be negative")
+                else:
+                    self.ki = param.value  # Update internal variable
+                    self.get_logger().info(f"ki updated to {self.ki}")
+            elif param.name == "kd":
+                #check if it is negative
+                if (param.value < 0.0):
+                    self.get_logger().warn("Invalid kd! It just cannot be negative.")
+                    return SetParametersResult(successful=False, reason="kd cannot be negative")
+                else:
+                    self.kd = param.value  # Update internal variable
+                    self.get_logger().info(f"kd updated to {self.kd}")
+        return SetParametersResult(successful=True)
 
 # Main
 def main(args=None):
