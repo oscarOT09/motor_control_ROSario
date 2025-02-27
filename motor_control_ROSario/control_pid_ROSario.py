@@ -48,6 +48,7 @@ class PIDController(Node):
 
     def control_loop(self):
         #if not hasattr(self, 'received_output') or not hasattr(self, 'received_setpoint'):
+        #if not hasattr(self, 'received_output'):
         #    return  # No ejecutar control hasta recibir datos
     
         # Cálculo del error
